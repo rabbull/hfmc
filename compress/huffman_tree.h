@@ -19,6 +19,10 @@ private:
         node *rhc = nullptr;
         node *father = nullptr;
 
+        bool is_leaf() {
+            return !lhc && !rhc;
+        }
+
         node () = default;
         node (node *lhc, node *rhc) : lhc(lhc), rhc(rhc), freq(lhc->freq + rhc->freq) {}
     };
@@ -54,6 +58,22 @@ public:
             roots.push(new node(p, q));
         }
         this->root = roots.top();
+    }
+
+    void dfs(code_table<__T> &table, node *curr, std::vector<bool>& code) {
+        if (curr->is_leaf()) {
+            table.setCode(((leaf_node<__T>*)curr)->key, code);
+        } else {
+            code.push_back(false);
+            dfs(table, curr->lhc, code);
+            *code.rbegin() = true;
+            dfs(table, curr->rhc, code);
+            code.resize(code.size() - 1);
+        }
+    }
+    void generate_table_to(code_table<__T> &table) {
+        std::vector<bool> code(0);
+        dfs(table, root, code);
     }
 
     void clear(node * curr) {

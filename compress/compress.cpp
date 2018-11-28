@@ -8,6 +8,7 @@
 #include "compress.h"
 #include "common.h"
 #include "huffman_tree.h"
+#include "../common/code_table.h"
 
 template <typename __T>
 void stat_freq(std::istream &is, bool &single_byte_flag, freq_table<__T> &freq);
@@ -32,7 +33,8 @@ void compress(const std::string &in_path) {
     huffman<short> tree;
     tree.build(freq);
     delete &freq;
-
+    code_table<short> code_table;
+    tree.generate_table_to(code_table);
 }
 
 template <typename __T>
