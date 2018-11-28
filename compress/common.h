@@ -6,5 +6,6 @@
 #define HUFFMAN_TREE_COMMON_H
 
 #include "../common/freq_table.h"
+#include "../common/code_table.h"
 
 #endif //HUFFMAN_TREE_COMMON_H

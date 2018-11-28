@@ -11,7 +11,7 @@
 template <typename __T>
 class code_table {
 private:
-    std::map<__T&, std::vector<bool>> code;
+    std::map<__T, std::vector<bool>> code;
 
 public:
     void setCode(const __T& key, const std::vector<bool> &code) {
