@@ -7,14 +7,13 @@ using namespace ui::navigator;
 
 int main() {
     while (true) {
-        std::cout << "fuckme" << std::endl;
         ui::navigator::clear();
         ui::navigator::welcome();
         ui::navigator::dispmenu();
         int choice;
         do {
             choice = getchar() - '0';
-            if (choice < 0 || choice > 3) {
+            if (choice > 0 && choice <= 3) {
                 break;
             }
         } while (true);
@@ -27,9 +26,9 @@ int main() {
             case 1:
                 compress_mode();
                 break;
-            case 2:
-                extract_mode();
-                break;
+//            case 2:
+//                extract_mode();
+//                break;
         }
     }
 }

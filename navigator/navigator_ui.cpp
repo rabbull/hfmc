@@ -6,7 +6,7 @@
 #include "navigator_ui.h"
 
 void ui::navigator::clear() {
-    system("reset");
+//    system("reset");
 }
 
 void ui::navigator::welcome() {
